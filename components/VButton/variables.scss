@@ -1,0 +1,18 @@
+@use "sass:math";
+
+// Size
+$button-height: 32px;
+$button-padding: 0 20px;
+$button-lg-height: 56px;
+
+// Background
+$button-background-color: #fff;
+
+// Border
+$button-border-color: #fff;
+$button-border-radius: math.div($button-height, 2);
+$button-border-width: 1px;
+
+// Text
+$button-color: #000;
+$button-font-weight: 600;

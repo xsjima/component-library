@@ -1,0 +1,98 @@
+@import './variables';
+
+.button[disabled] {
+  @apply bg-gray-light border-gray-light text-gray;
+}
+.button {
+  @apply text-sm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $button-height;
+  padding: $button-padding;
+  background-color: $button-background-color;
+  border: $button-border-width solid $button-border-color;
+  border-radius: $button-border-radius;
+  color: $button-color;
+  line-height: $button-height - ($button-border-width * 2);
+  font-weight: $button-font-weight;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-appearance: none;
+
+  &--lg {
+    height: $button-lg-height;
+  }
+
+  &--sm {
+    height: 24px;
+    line-height: 24 - ($button-border-width * 2);
+  }
+}
+
+.button--rounded {
+  border-radius: 99px;
+  font-weight: normal;
+}
+
+.button--circle {
+  border-radius: 50%;
+  width: $button-height;
+  padding: 0;
+
+  > * {
+    flex-shrink: 0;
+  }
+
+  &.button--lg {
+    width: $button-lg-height;
+  }
+}
+
+.button--wide {
+  @apply w-full;
+}
+
+.button--wide-lg {
+  width: 75%;
+}
+
+.button--primary {
+  @apply text-white bg-blue border-blue;
+}
+
+.button--black {
+  @apply text-white bg-black border-black;
+}
+
+.button--gray {
+  @apply text-black bg-gray-lightest border-gray-lightest;
+}
+
+.button--secondary {
+  @apply text-white bg-purple border-purple;
+}
+
+.button--danger {
+  @apply text-white bg-pink border-pink;
+}
+
+.button--success {
+  background-image: linear-gradient(#9de236, #4cda64);
+  border-color: #9de236;
+}
+
+.button--warning {
+  background-image: linear-gradient(#FFC700, #FF7A00);
+}
+
+.button--outline {
+  @apply text-black bg-white;
+}
+
+.button--link {
+  @apply text-blue;
+  background-color: transparent;
+  border-color: transparent;
+}
