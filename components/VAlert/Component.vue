@@ -9,8 +9,12 @@
 
 <script>
 import './styles.scss';
+import VIcon from '../VIcon';
 
 export default {
+  components: {
+    VIcon,
+  },
   props: {
     type: {
       type: String
