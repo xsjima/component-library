@@ -6,7 +6,12 @@
 </template>
 
 <script>
+import VIcon from '../VIcon';
+
 export default {
+  components: {
+    VIcon
+  },
   props: {
     to: {
       type: String,
@@ -68,7 +73,7 @@ export default {
       this.$axios[METHOD](`/api/likes/${this.to}`, {}, {
         progress: false
       })
-          .then(({ status }) => {
+          .then(({status}) => {
             this.like.isLiked = (status === 'like');
 
             if (this.like.isLiked) {

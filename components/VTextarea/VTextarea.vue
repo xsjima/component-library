@@ -18,6 +18,7 @@
 
 <script>
 import InputMixin from '../../mixins/input';
+
 export default {
   mixins: [InputMixin],
   props: {
@@ -57,12 +58,8 @@ export default {
     onPaste(event) {
       const clipboard = event.clipboardData.getData('text')
 
-      /*
-          Только если существующий текст + тот текст который в буфере, меньше чем maxlength.
-         */
-      if (
-          this.maxlength > (this.value && this.value.length + clipboard.length)
-      ) {
+      // Только если существующий текст + тот текст который в буфере, меньше чем maxlength.
+      if (this.maxlength > (this.value && this.value.length + clipboard.length)) {
         this.$emit('paste', event)
       }
     },
