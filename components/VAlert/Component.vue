@@ -1,7 +1,8 @@
 <template>
-  <div class="alert alert-primary" role="alert">
-    <div class="flex">
-      <v-icon :name="icon" width="16" height="16" :class="{[iconColor]: true}" class="flex-shrink-0"></v-icon>
+  <div class="v-alert" :class="{[`v-alert--${theme}`]: true}" role="alert">
+    <div class="v-alert-border"></div>
+    <div class="flex items-center space-x-3 ml-3">
+      <v-icon :name="icon" :class="{[iconColor]: true}" class="flex-shrink-0 w-6 h-6"></v-icon>
       <div><slot></slot></div>
     </div>
   </div>
@@ -19,17 +20,21 @@ export default {
     type: {
       type: String
     },
+    theme: {
+      type: String,
+      default: 'base'
+    }
   },
   computed: {
     icon() {
       return {
-        info: 'info'
-      }[this.type]
+        info: 'information-circle'
+      }[this.theme]
     },
     iconColor() {
       return {
-        info: 'text-gray-light'
-      }[this.type]
+        info: 'text-blue'
+      }[this.theme]
     }
   }
 }

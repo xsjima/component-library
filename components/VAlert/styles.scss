@@ -1,0 +1,13 @@
+.v-alert {
+  @apply flex bg-white p-3 rounded-lg;
+}
+.v-alert-border {
+  @apply rounded-full bg-gray-light;
+  width: 8px;
+}
+
+.v-alert--info {
+  .v-alert-border {
+    @apply bg-blue;
+  }
+}
