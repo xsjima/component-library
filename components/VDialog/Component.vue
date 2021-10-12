@@ -25,7 +25,15 @@
 </template>
 
 <script>
+import VButton from '../VButton';
+import VIcon from '../VIcon';
+
 export default {
+  components: {
+    VButton,
+    VIcon,
+  },
+
   props: {
     title: String,
     size: {
