@@ -28,12 +28,14 @@ export default {
   computed: {
     icon() {
       return {
-        info: 'information-circle'
+        info: 'information-circle',
+        success: 'badge-check'
       }[this.theme]
     },
     iconColor() {
       return {
-        info: 'text-blue'
+        info: 'text-blue',
+        success: 'text-green'
       }[this.theme]
     }
   }

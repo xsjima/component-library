@@ -11,3 +11,9 @@
     @apply bg-blue;
   }
 }
+
+.v-alert--success {
+  .v-alert-border {
+    @apply bg-green;
+  }
+}
