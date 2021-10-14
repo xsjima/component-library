@@ -14,11 +14,11 @@ export default {
     },
     minlength: {
       type: [Number, String],
-      default: 0
+      default: undefined
     },
     maxlength: {
       type: [Number, String],
-      default: 0
+      default: undefined
     },
 
     // type number
