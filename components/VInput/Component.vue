@@ -7,6 +7,8 @@
       :placeholder="placeholder"
       :class="classList"
       :value="value"
+      :maxlength="maxlength"
+      :minlength="minlength"
       :step="type === 'number' && step > 0 ? step : undefined"
       :min="type === 'number' && min > 0 ? min : undefined"
       :max="type === 'number' && max > 0 ? max : undefined"
