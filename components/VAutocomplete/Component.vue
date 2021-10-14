@@ -6,6 +6,8 @@
         :placeholder="placeholder"
         :value="query"
         :id="id"
+        :minlength="minlength"
+        :maxlength="maxlength"
         @input="onInput"
     >
     </v-input>
@@ -62,6 +64,14 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    minlength: {
+      type: [String, Number],
+      default: undefined
+    },
+    maxlength: {
+      type: [String, Number],
+      default: undefined
     },
   },
   setup(props) {
