@@ -76,28 +76,24 @@ export default {
       default: undefined
     },
   },
-  setup() {
+  setup(props) {
     const cursor = ref(null);
 
+    const query = ref(props.value);
     const showResults = ref(false);
     const target = ref(null);
 
     onClickOutside(target, () => showResults.value = false);
 
+    watch(() => query.value, (newValue) => {
+      showResults.value = newValue.length > 0;
+    });
+
     return {
       cursor,
+      query,
       showResults,
       target,
-    }
-  },
-  data() {
-    return {
-      query: this.value
-    }
-  },
-  watch: {
-    query(newValue) {
-      this.showResults.value = newValue.length > 0;
     }
   },
   methods: {
