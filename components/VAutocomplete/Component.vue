@@ -76,10 +76,9 @@ export default {
       default: undefined
     },
   },
-  setup(props) {
+  setup() {
     const cursor = ref(null);
 
-    const query = ref(props.value);
     const showResults = ref(false);
     const target = ref(null);
 
@@ -91,9 +90,13 @@ export default {
 
     return {
       cursor,
-      query,
       showResults,
       target,
+    }
+  },
+  data() {
+    return {
+      query: this.value
     }
   },
   methods: {
