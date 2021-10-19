@@ -84,10 +84,6 @@ export default {
 
     onClickOutside(target, () => showResults.value = false);
 
-    watch(() => query.value, (newValue) => {
-      showResults.value = newValue.length > 0;
-    });
-
     return {
       cursor,
       showResults,
@@ -97,6 +93,11 @@ export default {
   data() {
     return {
       query: this.value
+    }
+  },
+  watch: {
+    query(newValue) {
+      this.showResults.value = newValue.length > 0;
     }
   },
   methods: {
