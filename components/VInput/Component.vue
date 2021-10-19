@@ -12,7 +12,7 @@
       :step="type === 'number' && step > 0 ? step : undefined"
       :min="type === 'number' && min > 0 ? min : undefined"
       :max="type === 'number' && max > 0 ? max : undefined"
-      @input="$emit('input', $event.target.value)"
+      @input="$emit('input', $event.target.value); $emit('change', $event)"
     />
 
     <div v-if="isPassword" class="v-input-password__show-password" @click="changeInputType">

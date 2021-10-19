@@ -4,16 +4,17 @@
     <v-input
         type="search"
         :placeholder="placeholder"
-        :value="query"
+        :value="value"
         :id="id"
         :minlength="minlength"
         :maxlength="maxlength"
         @input="onInput"
+        @change="onInputChange"
     >
     </v-input>
     <div v-if="showResults" tabindex="1"
-         class="absolute top-100 mt-1 w-full z-10 overflow-y-auto max-h-48 border border-solid border-gray-light">
-      <div v-if="items.length > 0" class="bg-white p-2">
+         class="absolute top-100 mt-1 w-full z-10 border border-solid border-gray-light">
+      <div v-if="items.length > 0" class="bg-white p-2 overflow-y-auto" style="max-height: 10rem;">
         <div
             v-for="(item, index) in items"
             :key="item[keyId]"
@@ -25,6 +26,9 @@
       </div>
       <div v-else class="bg-white p-4">
         <slot name="empty">Ничего не найдено</slot>
+      </div>
+      <div v-if="!!$slots['footer']" class="bg-white border-t border-solid border-gray-light p-4">
+        <slot name="footer"></slot>
       </div>
     </div>
   </div>
@@ -76,22 +80,16 @@ export default {
       default: undefined
     },
   },
-  setup(props) {
+  setup() {
     const cursor = ref(null);
 
-    const query = ref(props.value);
     const showResults = ref(false);
     const target = ref(null);
 
     onClickOutside(target, () => showResults.value = false);
 
-    watch(() => query.value, (newValue) => {
-      showResults.value = newValue.length > 0;
-    });
-
     return {
       cursor,
-      query,
       showResults,
       target,
     }
@@ -109,9 +107,15 @@ export default {
       // по-этому нужен nextTick, который отработает после watch и закроет список результатов.
       this.$nextTick(() => this.showResults = false);
     },
+
     onInput(value) {
       this.$emit('input', value);
-      this.query = value;
+    },
+
+    onInputChange({ target }) {
+      if (target.value.length > 0) {
+        this.showResults = true;
+      }
     },
 
     handleKeydown(event) {
