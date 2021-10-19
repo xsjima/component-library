@@ -23,7 +23,9 @@
           <slot name="item" :item="item">{{ item[keyValue] }}</slot>
         </div>
       </div>
-      <div v-else class="bg-white p-4">Ничего не найдено</div>
+      <div v-else class="bg-white p-4">
+        <slot name="empty">Ничего не найдено</slot>
+      </div>
     </div>
   </div>
 </template>
