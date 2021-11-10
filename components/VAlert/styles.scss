@@ -1,18 +1,31 @@
 .v-alert {
   @apply flex bg-white p-3 rounded-lg;
+
+  a {
+    @apply underline font-semibold;
+  }
 }
+
 .v-alert-border {
   @apply rounded-full bg-gray-light;
   width: 8px;
 }
 
 .v-alert--info {
+  a {
+    @apply text-blue;
+  }
+
   .v-alert-border {
     @apply bg-blue;
   }
 }
 
 .v-alert--success {
+  a {
+    @apply text-green;
+  }
+
   .v-alert-border {
     @apply bg-green;
   }
