@@ -10,7 +10,9 @@ import Document from '@tiptap/extension-document';
 import Paragraph from '@tiptap/extension-paragraph';
 import Text from '@tiptap/extension-text';
 import Bold from '@tiptap/extension-bold';
+import Heading from '@tiptap/extension-heading';
 import Image from './components/Image';
+import Embed from './components/embed';
 
 export default {
   props: {
@@ -30,7 +32,9 @@ export default {
       Paragraph,
       Text,
       Bold,
+      Heading,
       Image,
+      Embed,
     ]);
   },
 }
