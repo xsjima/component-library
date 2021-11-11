@@ -1,6 +1,12 @@
 <template>
   <div>
-    <bubble-menu :editor="editor" v-if="editor">
+    <bubble-menu :editor="editor" v-if="editor" :should-show="bubbleMenuShouldShow">
+      <button type="button" @click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }">
+        H2
+      </button>
+      <button type="button" @click="editor.chain().focus().toggleHeading({ level: 3 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }">
+        H3
+      </button>
       <button type="button" @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
         bold
       </button>
@@ -9,12 +15,6 @@
       </button>
       <button type="button" @click="editor.chain().focus().toggleStrike().run()" :class="{ 'is-active': editor.isActive('strike') }">
         strike
-      </button>
-      <button type="button" @click="editor.chain().focus().toggleHeading({ level: 2 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }">
-        H2
-      </button>
-      <button type="button" @click="editor.chain().focus().toggleHeading({ level: 3 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 2 }) }">
-        H3
       </button>
     </bubble-menu>
     <floating-menu :editor="editor" v-if="editor">
@@ -30,6 +30,7 @@
   </div>
 </template>
 <script>
+import { isTextSelection, isNodeSelection } from '@tiptap/core';
 import { Editor, EditorContent, BubbleMenu, FloatingMenu } from '@tiptap/vue-2'
 import StarterKit from '@tiptap/starter-kit'
 import Image from './extensions/Image'
@@ -85,6 +86,27 @@ export default {
   },
 
   methods: {
+    bubbleMenuShouldShow({ state, from, to }) {
+      const { doc, selection } = state
+      const { empty } = selection
+
+      if (isNodeSelection(state.selection)) {
+        return false;
+      }
+
+      // Sometime check for `empty` is not enough.
+      // Doubleclick an empty paragraph returns a node size of 2.
+      // So we check also for an empty text size.
+      const isEmptyTextBlock = !doc.textBetween(from, to).length
+          && isTextSelection(state.selection)
+
+      if (empty || isEmptyTextBlock) {
+        return false
+      }
+
+      return true
+    },
+
     addVideo() {
       const url = window.prompt(
           'Ссылка на видео',
@@ -162,7 +184,30 @@ export default {
 }
 
 .tippy-box {
-  background-color: #0c193a;
-  color: white;
+  overflow: hidden;
+  border-radius: 99px;
+  padding: 0 4px;
+  background-color: rgba(0,0,0,.72);
+
+  .tippy-content > div {
+    display: flex;
+  }
+
+  button {
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+
+    &.is-active {
+      background-color: rgba(0,0,0,.8);
+      font-weight: 600;
+    }
+
+    + button {
+      border-left: 1px solid rgba(0,0,0,.2);
+    }
+  }
 }
 </style>

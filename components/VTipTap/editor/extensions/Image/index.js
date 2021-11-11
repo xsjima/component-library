@@ -11,10 +11,6 @@ export default Node.create({
 
   draggable: true,
 
-  isolating: true,
-
-  selectable: true,
-
   addAttributes() {
     return {
       id: {
