@@ -8,21 +8,21 @@
         H3
       </button>
       <button type="button" @click="editor.chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
-        bold
+        B
       </button>
       <button type="button" @click="editor.chain().focus().toggleItalic().run()" :class="{ 'is-active': editor.isActive('italic') }">
-        italic
+        I
       </button>
       <button type="button" @click="editor.chain().focus().toggleStrike().run()" :class="{ 'is-active': editor.isActive('strike') }">
-        strike
+        S
       </button>
     </bubble-menu>
     <floating-menu :editor="editor" v-if="editor">
       <button type="button" @click="$refs.images.click()">
-        Image
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
       </button>
       <button type="button" @click="addVideo">
-        Video
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
       </button>
     </floating-menu>
     <editor-content :editor="editor" />
@@ -63,7 +63,7 @@ export default {
 
   mounted() {
     this.editor = new Editor({
-      content: this.value ? JSON.parse(this.value) : '',
+      content: this.value,
       extensions: [
         StarterKit,
         Image,
@@ -80,7 +80,7 @@ export default {
         });
 
         this.$emit('update:images', images);
-        this.$emit('input', JSON.stringify(getJSON));
+        this.$emit('input', this.editor.getHTML());
       },
     })
   },
@@ -153,20 +153,15 @@ export default {
 </script>
 
 <style lang="scss">
-.v-tip-tap-toolbar {
-  button {
-    @apply bg-gray;
-    padding: 4px;
-
-    &.is-active {
-      @apply bg-gray-dark;
-    }
-  }
-}
-/* Basic editor styles */
 .ProseMirror {
   padding: 16px;
-  border: 1px solid #f1f1f1;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.5rem;
+
+  &-focused {
+    border: 1px solid #34aaff;
+    outline: none;
+  }
 
   img {
     width: 100%;
@@ -174,12 +169,6 @@ export default {
 
   > * + * {
     margin-top: 1rem;
-  }
-
-  .tiptap-image {
-    &.ProseMirror-selectednode {
-      outline: 3px solid #68CEF8;
-    }
   }
 }
 

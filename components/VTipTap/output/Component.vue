@@ -11,13 +11,15 @@ import Paragraph from '@tiptap/extension-paragraph';
 import Text from '@tiptap/extension-text';
 import Bold from '@tiptap/extension-bold';
 import Heading from '@tiptap/extension-heading';
+import Blockquote from '@tiptap/extension-blockquote';
+import Italic from '@tiptap/extension-italic';
 import Image from './components/Image';
 import Embed from './components/embed';
 
 export default {
   props: {
     json: {
-      type: String,
+      type: Object,
       required: true,
     }
   },
@@ -27,7 +29,7 @@ export default {
     }
   },
   mounted() {
-    this.html = generateHTML(JSON.parse(this.json), [
+    const exts = [
       Document,
       Paragraph,
       Text,
@@ -35,7 +37,11 @@ export default {
       Heading,
       Image,
       Embed,
-    ]);
+      Blockquote,
+      Italic,
+    ];
+
+    this.html = generateHTML(this.json, exts);
   },
 }
 </script>

@@ -19,19 +19,19 @@
   display: flex;
   align-items: center;
   margin-left: auto;
-  background-color: #f1f1f1;
+  background-color: rgba(0,0,0,.72);
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   overflow: hidden;
 }
 .node-toolbar-tool {
-  color: #aaa;
+  color: #fcfcfc;
   width: 28px;
   height: 28px;
   padding: 4px;
 
   &:hover {
-    background-color: #e1e1e1;
+    background-color: rgba(0,0,0,.8);
   }
 }
 </style>
