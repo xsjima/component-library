@@ -26,12 +26,13 @@
       </button>
     </floating-menu>
     <editor-content :editor="editor" />
-    <input type="file" ref="images" class="hidden" @change="onAddImage" multiple>
+    <input type="file" ref="images" class="hidden" @change="addImage" multiple>
   </div>
 </template>
 <script>
 import { isTextSelection, isNodeSelection } from '@tiptap/core';
 import { Editor, EditorContent, BubbleMenu, FloatingMenu } from '@tiptap/vue-2'
+import Placeholder from '@tiptap/extension-placeholder';
 import StarterKit from '@tiptap/starter-kit'
 import Image from './extensions/Image'
 import Embed from './extensions/Embed'
@@ -66,11 +67,17 @@ export default {
       content: this.value,
       extensions: [
         StarterKit,
+        Placeholder.configure({
+          placeholder: 'Напишите что-нибудь...',
+        }),
         Image,
         Embed,
       ],
-      onUpdate: () => {
-        const getJSON = this.editor.getJSON();
+      onCreate: ({ editor }) => {
+        this.$emit('input', editor.getHTML());
+      },
+      onUpdate: ({ editor }) => {
+        const getJSON = editor.getJSON();
         const images = [];
 
         getJSON.content.forEach(el => {
@@ -80,7 +87,7 @@ export default {
         });
 
         this.$emit('update:images', images);
-        this.$emit('input', this.editor.getHTML());
+        this.$emit('input', editor.getHTML());
       },
     })
   },
@@ -108,14 +115,13 @@ export default {
     },
 
     addVideo() {
-      const url = window.prompt(
-          'Ссылка на видео',
-      )
+      const url = window.prompt('Ссылка на видео');
+
       if (url) {
         this.editor.chain().focus().insertVideoPlayer({ url }).run()
       }
     },
-    onAddImage(event) {
+    addImage(event) {
       const formData = new FormData();
       const images = event.target.files;
 
@@ -170,6 +176,15 @@ export default {
   > * + * {
     margin-top: 1rem;
   }
+}
+
+/* Placeholder (at the top) */
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #adb5bd;
+  pointer-events: none;
+  height: 0;
 }
 
 .tippy-box {
