@@ -1,13 +1,11 @@
 <template>
-  <div class="v-chip" :class="{[`v-chip--${size}`]: true, [`v-chip--${theme}`]: true}">
+  <div class="v-chip" :class="{[`v-chip--size-${size}`]: true, [`v-chip--${theme}`]: true}">
     <div v-if="!!$slots['thumbnail']">
       <slot name="thumbnail"></slot>
     </div>
     <div class="v-chip-text">{{ text }}</div>
-    <button v-if="deletable" type="button" tabindex="0" class="v-chip-delete" @click="$emit('delete')">
-      <slot name="delete">
-        <v-icon name="x" class="w-4 h-4"></v-icon>
-      </slot>
+    <button v-if="deletable" title="Удалить" type="button" tabindex="0" class="v-chip-delete" @click="$emit('delete')">
+      <v-icon name="x" class="w-4 h-4"></v-icon>
     </button>
   </div>
 </template>
@@ -53,9 +51,12 @@ export default {
   }
 }
 // sizes
-.v-chip--base {
+.v-chip--size-base {
   height: 32px;
   border-radius: 16px;
+}
+.v-chip--success {
+  border-color: #6DC35E;
 }
 // themes
 //
@@ -71,5 +72,9 @@ export default {
   height: 20px;
   border-radius: 10px;
   color: #fff;
+
+  &:hover {
+    background-color: lightpink;
+  }
 }
 </style>
