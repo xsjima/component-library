@@ -1,5 +1,5 @@
 <template>
-  <div class="v-chip" :class="{[`v-chip--size-${size}`]: true, [`v-chip--${theme}`]: true}">
+  <div class="v-chip" :class="{[`v-chip--size-${size}`]: true, [`v-chip--${theme}`]: true}" @click="$emit('click')">
     <div v-if="!!$slots['thumbnail']">
       <slot name="thumbnail"></slot>
     </div>
