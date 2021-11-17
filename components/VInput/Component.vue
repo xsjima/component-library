@@ -16,15 +16,19 @@
     />
 
     <div v-if="isPassword" class="v-input-password__show-password" @click="changeInputType">
-      <v-icon name="image-filter-outline" width="20" height="20" :class="{[editableType === 'text' ? 'text-blue' : 'text-gray']: true}"></v-icon>
+      <v-icon name="eye" width="20" height="20" :class="{[editableType === 'text' ? 'text-blue' : 'text-gray']: true}"></v-icon>
     </div>
   </div>
 </template>
 
 <script>
 import InputMixin from '../../mixins/input';
+import VIcon from '../VIcon';
 
 export default {
+  components: {
+    VIcon
+  },
   mixins: [InputMixin],
   props: {
     type: {
