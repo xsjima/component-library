@@ -30,3 +30,15 @@
     @apply bg-green;
   }
 }
+
+.v-alert--danger {
+  @apply bg-pink-100;
+
+  a {
+    @apply text-pink;
+  }
+
+  .v-alert-border {
+    @apply bg-pink;
+  }
+}

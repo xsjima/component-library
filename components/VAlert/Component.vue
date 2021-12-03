@@ -29,13 +29,15 @@ export default {
     icon() {
       return {
         info: 'information-circle',
-        success: 'badge-check'
+        success: 'badge-check',
+        danger: 'exclamation-circle'
       }[this.theme]
     },
     iconColor() {
       return {
         info: 'text-blue',
-        success: 'text-green'
+        success: 'text-green',
+        danger: 'text-pink'
       }[this.theme]
     }
   }
