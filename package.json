@@ -12,8 +12,8 @@
     "url": "https://github.com/xsjima/component-library/issues"
   },
   "homepage": "https://github.com/xsjima/component-library#readme",
-  "main": "dist/component-library.ssr.js",
-  "browser": "src/components/index.js",
+  "main": "dist/component-library.esm.js",
+  "browser": "dist/component-library.esm.js",
   "module": "dist/component-library.esm.js",
   "unpkg": "dist/component-library.min.js",
   "files": [
