@@ -25,10 +25,10 @@
     "serve": "vue-cli-service serve dev/serve.js",
     "prebuild": "rimraf ./dist",
     "build": "cross-env NODE_ENV=production rollup --config build/rollup.config.js",
-    "build:ssr": "cross-env NODE_ENV=production tailwindcss -i ./src/main.css -o ./dist/output.css && rollup --config build/rollup.config.js --format cjs",
+    "build:ssr": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format cjs",
     "build:es": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es",
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife",
-    "prepare": "cross-env NODE_ENV=production rollup --config build/rollup.config.js"
+    "prepare": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format es"
   },
   "dependencies": {},
   "devDependencies": {
