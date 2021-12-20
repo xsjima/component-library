@@ -1,2 +1,2 @@
-import VTextarea from './VTextarea'
+import VTextarea from './Component'
 export default VTextarea
