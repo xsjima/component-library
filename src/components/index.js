@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import VAlert from './VAlert';
 import VAutocomplete from './VAutocomplete';
 import VButton from './VButton';
