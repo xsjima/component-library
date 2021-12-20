@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import './styles.scss';
 import VIcon from '../VIcon';
 export default {
   name: 'VCheckbox',
@@ -42,24 +43,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.v-checkbox {
-  @apply flex items-center space-x-1 cursor-pointer;
-}
-.v-checkbox-indicator {
-  @apply w-4 h-4 bg-white rounded block border border-gray-light border-solid flex items-center justify-center;
-
-  > * {
-    display: none;
-  }
-}
-
-.v-checkbox input:checked ~ .v-checkbox-indicator {
-  @apply bg-blue bg-opacity-25 border-blue;
-
-  > * {
-    display: block;
-  }
-}
-</style>
