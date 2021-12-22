@@ -61,7 +61,7 @@ export default {
     }
   },
   beforeDestroy() {
-    if (Swiper) {
+    if (swiper && swiper.hasOwnProperty('destroy')) {
       swiper.destroy();
     }
   }
