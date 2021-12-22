@@ -6,6 +6,7 @@
         @click="$emit('click', slide)"
         class="swiper-slide"
         :style="{
+          height: 'auto',
           'width': getOptions.slidesPerView === 'auto'
             ? 'auto'
             : undefined
