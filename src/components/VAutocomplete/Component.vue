@@ -13,7 +13,7 @@
     >
     </v-input>
     <div v-if="showResults" tabindex="1"
-         class="absolute top-100 mt-1 w-full z-10 border border-solid border-gray-light">
+         class="absolute top-100 mt-1 w-auto z-10 border border-solid border-gray-light">
       <div v-if="items.length > 0" class="bg-white p-2 overflow-y-auto" style="max-height: 10rem;">
         <div
             v-for="(item, index) in items"
