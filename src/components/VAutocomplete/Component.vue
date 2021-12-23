@@ -13,7 +13,7 @@
     >
     </v-input>
     <div v-if="showResults" tabindex="1"
-         class="absolute top-100 mt-1 w-auto z-10 border border-solid border-gray-light">
+         class="absolute top-100 mt-1 z-10 border border-solid border-gray-light" :style="{width: resultWidth}">
       <div v-if="items.length > 0" class="bg-white p-2 overflow-y-auto" style="max-height: 10rem;">
         <div
             v-for="(item, index) in items"
@@ -79,6 +79,10 @@ export default {
       type: [String, Number],
       default: undefined
     },
+    resultWidth: {
+      type: String,
+      default: '100%',
+    }
   },
   setup() {
     const cursor = ref(null);
