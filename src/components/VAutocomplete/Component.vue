@@ -2,9 +2,10 @@
   <div class="relative" ref="target"
        @keydown="handleKeydown">
     <v-input
+        ref="search"
         type="search"
         :placeholder="placeholder"
-        :value="value"
+        v-model="query"
         :id="id"
         :minlength="minlength"
         :maxlength="maxlength"
@@ -84,11 +85,12 @@ export default {
       default: '100%',
     }
   },
-  setup() {
+  setup(props) {
     const cursor = ref(null);
 
     const showResults = ref(false);
     const target = ref(null);
+    const query = ref(props.value);
 
     onClickOutside(target, () => showResults.value = false);
 
@@ -96,6 +98,7 @@ export default {
       cursor,
       showResults,
       target,
+      query,
     }
   },
   methods: {
