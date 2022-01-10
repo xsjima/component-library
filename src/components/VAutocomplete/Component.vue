@@ -2,9 +2,10 @@
   <div class="relative" ref="target"
        @keydown="handleKeydown">
     <v-input
+        ref="search"
         type="search"
         :placeholder="placeholder"
-        :value="value"
+        v-model="query"
         :id="id"
         :minlength="minlength"
         :maxlength="maxlength"
@@ -13,7 +14,7 @@
     >
     </v-input>
     <div v-if="showResults" tabindex="1"
-         class="absolute top-100 mt-1 w-full z-10 border border-solid border-gray-light">
+         class="absolute top-100 mt-1 z-10 border border-solid border-gray-light" :style="{width: resultWidth}">
       <div v-if="items.length > 0" class="bg-white p-2 overflow-y-auto" style="max-height: 10rem;">
         <div
             v-for="(item, index) in items"
@@ -79,12 +80,17 @@ export default {
       type: [String, Number],
       default: undefined
     },
+    resultWidth: {
+      type: String,
+      default: '100%',
+    }
   },
-  setup() {
+  setup(props) {
     const cursor = ref(null);
 
     const showResults = ref(false);
     const target = ref(null);
+    const query = ref(props.value);
 
     onClickOutside(target, () => showResults.value = false);
 
@@ -92,6 +98,7 @@ export default {
       cursor,
       showResults,
       target,
+      query,
     }
   },
   methods: {
