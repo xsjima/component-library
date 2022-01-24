@@ -29,7 +29,9 @@
         <slot name="empty">Ничего не найдено</slot>
       </div>
       <div v-if="!!$slots['footer']" class="bg-white border-t border-solid border-gray-light p-4">
-        <slot name="footer"></slot>
+        <div @click="query = ''; showResults = false;">
+          <slot name="footer"></slot>
+        </div>
       </div>
     </div>
   </div>
