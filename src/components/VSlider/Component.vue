@@ -14,26 +14,40 @@
         <slot name="slide" :slide="slide"></slot>
       </div>
     </div>
+    <div v-if="arrows && !isBeginning" @click="onPrev" class="v-slider-arrow v-slider-arrow--left">
+      <v-icon name="chevron-left" class="text-white w-5 h-5"></v-icon>
+    </div>
+    <div v-if="arrows && !isEnd" @click="onNext" class="v-slider-arrow v-slider-arrow--right">
+      <v-icon name="chevron-right" class="text-white w-5 h-5"></v-icon>
+    </div>
     <div v-if="pagination" class="swiper-pagination"></div>
   </div>
 </template>
 
 <script>
-let Swiper = null, swiper = null;
-
 import 'swiper/swiper-bundle.min.css';
+import VIcon from '../VIcon';
+
+let Swiper = null;
 
 if (process.client) {
   Swiper = require('swiper').default;
 }
 
 export default {
+  components: {
+    VIcon
+  },
   props: {
     slides: {
       type: Array,
       default() {
         return [];
       }
+    },
+    arrows: {
+      type: Boolean,
+      default: true,
     },
     pagination: {
       type: Boolean,
@@ -47,9 +61,27 @@ export default {
       type: Object,
     }
   },
+  setup() {
+    let swiper = null;
+
+    return {
+      swiper
+    }
+  },
+  data() {
+    return {
+      isBeginning: true,
+      isEnd: false,
+    }
+  },
   mounted() {
     if (Swiper) {
-      swiper = new Swiper('.swiper', this.getOptions);
+      this.swiper = new Swiper('.swiper', this.getOptions);
+
+      this.swiper.on('activeIndexChange', ({ isBeginning, isEnd }) => {
+        this.isBeginning = isBeginning;
+        this.isEnd = isEnd;
+      });
     }
   },
   computed: {
@@ -60,10 +92,36 @@ export default {
       }, this.options)
     }
   },
+  methods: {
+    onPrev() { this.swiper.slidePrev() },
+    onNext() { this.swiper.slideNext() },
+  },
   beforeDestroy() {
-    if (swiper && swiper.hasOwnProperty('destroy')) {
-      swiper.destroy();
+    if (this.swiper && this.swiper.hasOwnProperty('destroy')) {
+      this.swiper.destroy();
     }
   }
 }
 </script>
+
+<style lang="scss">
+.v-slider-arrow {
+  z-index: 1;
+  position: absolute;
+  top: calc(50% - 20px);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: rgba(0,0,0,.4);
+  cursor: pointer;
+  &--left {
+    left: 8px;
+  }
+  &--right {
+    right: 8px;
+  }
+}
+</style>
