@@ -115,7 +115,7 @@ export default {
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  background-color: rgba(0,0,0,.4);
+  background-color: rgba(0,0,0,.64);
   cursor: pointer;
   &--left {
     left: 8px;
