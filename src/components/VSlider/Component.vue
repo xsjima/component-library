@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { ref, onMounted, onBeforeUnmount } from '@vue/composition-api';
+import { ref, onMounted, onBeforeUnmount } from '@nuxtjs/composition-api';
 import 'swiper/swiper-bundle.min.css';
 import VIcon from '../VIcon';
 
