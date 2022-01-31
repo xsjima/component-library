@@ -2,10 +2,10 @@
   <div class="swiper">
     <div class="swiper-wrapper">
       <div
-          v-for="slide in slides" :key="slide[slideKey]"
-          @click="$emit('click', slide)"
-          class="swiper-slide"
-          :style="{
+        v-for="slide in slides" :key="slide[slideKey]"
+        @click="$emit('click', slide)"
+        class="swiper-slide"
+        :style="{
           height: 'auto',
           'width': getOptions.slidesPerView === 'auto'
             ? 'auto'
@@ -20,10 +20,13 @@
 
 <script>
 let Swiper = null, swiper = null;
+
 import 'swiper/swiper-bundle.min.css';
+
 if (process.client) {
   Swiper = require('swiper').default;
 }
+
 export default {
   props: {
     slides: {
