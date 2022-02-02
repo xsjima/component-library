@@ -74,7 +74,7 @@ export default {
   },
   mounted() {
     if (window.Swiper) {
-      this.swiper = new window.Swiper('.swiper', this.getOptions);
+      this.swiper = new window.Swiper(this.$el, this.getOptions);
 
       this.swiper.on('activeIndexChange', ({ isBeginning, isEnd }) => {
         this.isBeginning = isBeginning;
