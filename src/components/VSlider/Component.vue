@@ -28,10 +28,8 @@
 import 'swiper/swiper-bundle.min.css';
 import VIcon from '../VIcon';
 
-let Swiper = null;
-
-if (process.client) {
-  Swiper = require('swiper').default;
+if (process.client && !window.Swiper) {
+  window.Swiper = require('swiper').default;
 }
 
 export default {
@@ -75,8 +73,8 @@ export default {
     }
   },
   mounted() {
-    if (Swiper) {
-      this.swiper = new Swiper('.swiper', this.getOptions);
+    if (window.Swiper) {
+      this.swiper = new window.Swiper('.swiper', this.getOptions);
 
       this.swiper.on('activeIndexChange', ({ isBeginning, isEnd }) => {
         this.isBeginning = isBeginning;
