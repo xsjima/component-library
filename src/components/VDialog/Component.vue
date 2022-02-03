@@ -59,5 +59,8 @@ export default {
   &--lg {
     width: 640px;
   }
+  &--full {
+    width: 100%;
+  }
 }
 </style>
