@@ -11,7 +11,7 @@
             ? 'auto'
             : undefined
          }">
-        <slot name="slide" :slide="slide"></slot>
+        <slot name="slide" :slide="{swiper, slide}"></slot>
       </div>
     </div>
     <div v-if="arrows && !isBeginning" @click="onPrev" class="v-slider-arrow v-slider-arrow--left">
