@@ -7,9 +7,9 @@
         class="swiper-slide"
         :style="{
           height: 'auto',
-          'width': getOptions.slidesPerView === 'auto'
+          width:  getOptions.slidesPerView === 'auto'
             ? 'auto'
-            : '100%'
+            : undefined
          }">
         <slot name="slide" :slide="slide"></slot>
       </div>
