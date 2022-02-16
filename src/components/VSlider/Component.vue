@@ -9,7 +9,7 @@
           height: 'auto',
           'width': getOptions.slidesPerView === 'auto'
             ? 'auto'
-            : undefined
+            : '100%'
          }">
         <slot name="slide" :slide="slide"></slot>
       </div>
