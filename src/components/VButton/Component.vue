@@ -3,7 +3,7 @@
       :to="to || undefined"
       :is="tagName"
       :type="type"
-      :disabled="busy || disabled"
+      :disabled="loading || disabled"
       :class="classList"
       @click="$emit('click')"
       @click.native="$emit('click')"
@@ -34,7 +34,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    busy: {
+    loading: {
       type: Boolean,
       default: false,
     },
@@ -90,6 +90,10 @@ export default {
         if (this.wide === true) {
           classList += ' button--wide'
         }
+      }
+
+      if (this.loading) {
+        classList += ' button--loading';
       }
 
       return classList;
