@@ -1,5 +1,5 @@
 <template>
-  <div class="swiper">
+  <div class="swiper" style="height: inherit;">
     <div class="swiper-wrapper">
       <div
         v-for="slide in slides" :key="slide[slideKey]"
@@ -28,8 +28,8 @@
 import 'swiper/swiper-bundle.min.css';
 import VIcon from '../VIcon';
 
-if (process.client && !window.Swiper) {
-  window.Swiper = require('swiper').default;
+if (process.client) {
+  window.Swiper = require('swiper/swiper-bundle.min.js');
 }
 
 export default {
