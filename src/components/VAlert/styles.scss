@@ -12,6 +12,8 @@
 }
 
 .v-alert--info {
+  @apply bg-blue-50;
+
   a {
     @apply text-blue;
   }
