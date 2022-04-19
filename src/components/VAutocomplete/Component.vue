@@ -153,7 +153,10 @@ export default {
           this.onSelect(item);
         } else {
           this.query = '';
-          this.$emit('enter');
+          this.$nextTick(() => {
+            this.showResults = false;
+            this.$emit('enter');
+          })
         }
       }
     }
