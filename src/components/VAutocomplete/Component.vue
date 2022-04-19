@@ -151,6 +151,8 @@ export default {
 
         if (item) {
           this.onSelect(item);
+        } else {
+          this.$emit('enter');
         }
       }
     }
