@@ -152,6 +152,7 @@ export default {
         if (item) {
           this.onSelect(item);
         } else {
+          this.query = '';
           this.$emit('enter');
         }
       }
