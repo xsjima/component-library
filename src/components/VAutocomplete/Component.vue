@@ -87,21 +87,15 @@ export default {
       default: '100%',
     }
   },
-  setup(props) {
-    const cursor = ref(null);
-
-    const showResults = ref(false);
-    const target = ref(null);
-    const query = ref(props.value);
-
-    onClickOutside(target, () => showResults.value = false);
-
+  data() {
     return {
-      cursor,
-      showResults,
-      target,
-      query,
+      cursor: null,
+      showResults: false,
+      query: this.value
     }
+  },
+  created() {
+    onClickOutside(this.$refs.target, () => this.showResults = false);
   },
   methods: {
     onSelect(item) {
