@@ -20,7 +20,7 @@
     "prepare": "cross-env NODE_ENV=production rollup --config build/rollup.config.js"
   },
   "dependencies": {
-    "@vue/composition-api": "^1.6.3",
+    "@vue/composition-api": "1.6.2",
     "@vueuse/core": "^8.7.5",
     "sass-loader": "10.1.1"
   },
