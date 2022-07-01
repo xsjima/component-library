@@ -59,17 +59,11 @@ export default {
       type: Object,
     }
   },
-  setup() {
-    let swiper = null;
-
-    return {
-      swiper
-    }
-  },
   data() {
     return {
       isBeginning: true,
       isEnd: false,
+      swiper: null
     }
   },
   mounted() {
