@@ -13,6 +13,7 @@
 <script>
 import './styles.scss';
 import VIcon from '../VIcon';
+
 export default {
   name: 'VCheckbox',
   components: {
