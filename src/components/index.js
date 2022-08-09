@@ -8,7 +8,6 @@ import VDialog from './VDialog/Component.vue';
 import VIcon from './VIcon/Component.vue';
 import VInput from './VInput/Component.vue';
 import VLike from './VLike/Component.vue';
-import { VOverlay, VOverlayPlugin } from './VOverlay';
 import VSheet from './VSheet/Component.vue';
 import VSlider from './VSlider/Component.vue';
 import VTextarea from './VTextarea/Component.vue';
@@ -23,8 +22,6 @@ export {
   VIcon,
   VInput,
   VLike,
-  VOverlay,
-  VOverlayPlugin,
   VSheet,
   VSlider,
   VTextarea,
