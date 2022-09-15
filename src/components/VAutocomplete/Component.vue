@@ -87,11 +87,19 @@ export default {
       default: '100%',
     }
   },
+  watch: {
+    value: {
+      handler(newValue) {
+        this.query = newValue
+      },
+      immediate: true
+    }
+  },
   data() {
     return {
       cursor: null,
       showResults: false,
-      query: this.value
+      query: ''
     }
   },
   created() {
