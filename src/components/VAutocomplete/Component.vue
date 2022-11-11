@@ -86,14 +86,6 @@ export default {
       default: '100%',
     }
   },
-  watch: {
-    value: {
-      handler(newValue) {
-        this.query = newValue
-      },
-      immediate: true
-    }
-  },
   data() {
     return {
       cursor: null,
@@ -103,6 +95,14 @@ export default {
   },
   mounted() {
     onClickOutside(this.$refs.target, () => this.showResults = false);
+  },
+  watch: {
+    value: {
+      handler(newValue) {
+        this.query = newValue
+      },
+      immediate: true
+    }
   },
   methods: {
     onSelect(item) {
