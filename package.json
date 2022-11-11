@@ -21,6 +21,7 @@
     "prepare": "cross-env NODE_ENV=production rollup --config build/rollup.config.js"
   },
   "dependencies": {
+    "@vue/composition-api": "^1.7.1",
     "@vueuse/core": "^9.5.0"
   },
   "devDependencies": {
