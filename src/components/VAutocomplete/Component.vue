@@ -38,9 +38,8 @@
 </template>
 
 <script>
-import { ref, watch } from '@vue/composition-api';
-import { onClickOutside } from '@vueuse/core';
-import VInput from '../VInput';
+import { onClickOutside } from '@vueuse/core'
+import VInput from '../VInput'
 
 export default {
   components: {
@@ -102,7 +101,7 @@ export default {
       query: ''
     }
   },
-  created() {
+  mounted() {
     onClickOutside(this.$refs.target, () => this.showResults = false);
   },
   methods: {
